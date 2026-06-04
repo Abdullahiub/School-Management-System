@@ -1,0 +1,50 @@
+[
+  {
+    "id": "STU001",
+    "regNo": "STU001",
+    "fullName": "Alex Mercer",
+    "gender": "Male",
+    "dob": "2011-04-12",
+    "classId": "Primary 4",
+    "parentName": "John Mercer",
+    "parentPhone": "+1 555-0111",
+    "address": "123 Maple Street, Sector-4",
+    "photoUrl": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "STU002",
+    "regNo": "STU002",
+    "fullName": "Emma Watson",
+    "gender": "Female",
+    "dob": "2011-09-24",
+    "classId": "Primary 4",
+    "parentName": "Richard Watson",
+    "parentPhone": "+1 555-0112",
+    "address": "456 Oak Avenue, Sector-2",
+    "photoUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "STU003",
+    "regNo": "STU003",
+    "fullName": "Liam Neeson",
+    "gender": "Male",
+    "dob": "2012-01-15",
+    "classId": "Jss2",
+    "parentName": "Patrick Neeson",
+    "parentPhone": "+1 555-0113",
+    "address": "789 Pine Road, Sector-9",
+    "photoUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "STU004",
+    "regNo": "STU004",
+    "fullName": "Sophia Loren",
+    "gender": "Female",
+    "dob": "2010-06-30",
+    "classId": "SS3",
+    "parentName": "Mario Loren",
+    "parentPhone": "+1 555-0114",
+    "address": "321 Elm Drive, Sector-11",
+    "photoUrl": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
+  }
+]

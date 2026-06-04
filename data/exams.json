@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ex-001",
+    "classId": "Primary 4",
+    "subject": "Mathematics (Algebra)",
+    "date": "2026-05-15",
+    "maxMarks": 100,
+    "passMarks": 50,
+    "status": "Completed"
+  },
+  {
+    "id": "ex-002",
+    "classId": "Primary 4",
+    "subject": "Science (Biology)",
+    "date": "2026-05-18",
+    "maxMarks": 100,
+    "passMarks": 50,
+    "status": "Completed"
+  },
+  {
+    "id": "ex-003",
+    "classId": "SS3",
+    "subject": "Physics (Mechanics)",
+    "date": "2026-05-20",
+    "maxMarks": 100,
+    "passMarks": 50,
+    "status": "Completed"
+  },
+  {
+    "id": "ex-004",
+    "classId": "Primary 4",
+    "subject": "English (Literature)",
+    "date": "2026-06-10",
+    "maxMarks": 100,
+    "passMarks": 50,
+    "status": "Scheduled"
+  },
+  {
+    "id": "ex-1780554606207",
+    "classId": "class-10b",
+    "subject": "mathematics",
+    "date": "2026-06-04",
+    "maxMarks": 100,
+    "passMarks": 60,
+    "status": "Scheduled"
+  }
+]

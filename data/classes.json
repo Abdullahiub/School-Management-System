@@ -1,0 +1,30 @@
+[
+  {
+    "id": "class-10b",
+    "name": "Primary 4",
+    "teacherId": "TCH101",
+    "teacherName": "David Miller",
+    "room": "Room 204"
+  },
+  {
+    "id": "class-9a",
+    "name": "Jss2",
+    "teacherId": "TCH102",
+    "teacherName": "Sarah Jenkins",
+    "room": "Room 101"
+  },
+  {
+    "id": "class-11a",
+    "name": "SS3",
+    "teacherId": "TCH103",
+    "teacherName": "Robert Garcia",
+    "room": "Room 302"
+  },
+  {
+    "id": "class 2A",
+    "name": "Primary 2",
+    "teacherId": "TCH102",
+    "teacherName": "Sarah Jenkins",
+    "room": "Room 304"
+  }
+]

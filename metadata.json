@@ -1,0 +1,6 @@
+{
+  "name": "School Management System",
+  "description": "A complete modern responsive School Management System web application for managing school operations, search/filter, results processing, attendance tracking, and exporting PDF reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

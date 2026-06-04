@@ -1,0 +1,34 @@
+[
+  {
+    "id": "usr-1",
+    "username": "admin",
+    "passwordHash": "admin123",
+    "role": "admin",
+    "fullName": "Admin",
+    "linkedId": "ADM101"
+  },
+  {
+    "id": "usr-2",
+    "username": "teacher",
+    "passwordHash": "teacher123",
+    "role": "teacher",
+    "fullName": "David Miller",
+    "linkedId": "TCH101"
+  },
+  {
+    "id": "usr-3",
+    "username": "student",
+    "passwordHash": "student123",
+    "role": "student",
+    "fullName": "Alex Mercer",
+    "linkedId": "STU001"
+  },
+  {
+    "id": "usr-4",
+    "username": "parent",
+    "passwordHash": "parent123",
+    "role": "parent",
+    "fullName": "John Mercer",
+    "linkedId": "STU001"
+  }
+]

@@ -1,0 +1,312 @@
+[
+  {
+    "id": "att-10b-0",
+    "date": "2026-05-25",
+    "classId": "Primary 4",
+    "records": [
+      {
+        "studentId": "STU001",
+        "name": "Alex Mercer",
+        "status": "Present"
+      },
+      {
+        "studentId": "STU002",
+        "name": "Emma Watson",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-9a-0",
+    "date": "2026-05-25",
+    "classId": "Jss2",
+    "records": [
+      {
+        "studentId": "STU003",
+        "name": "Liam Neeson",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-11a-0",
+    "date": "2026-05-25",
+    "classId": "SS3",
+    "records": [
+      {
+        "studentId": "STU004",
+        "name": "Sophia Loren",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-10b-1",
+    "date": "2026-05-24",
+    "classId": "Primary 4",
+    "records": [
+      {
+        "studentId": "STU001",
+        "name": "Alex Mercer",
+        "status": "Present"
+      },
+      {
+        "studentId": "STU002",
+        "name": "Emma Watson",
+        "status": "Absent"
+      }
+    ]
+  },
+  {
+    "id": "att-9a-1",
+    "date": "2026-05-24",
+    "classId": "Jss2",
+    "records": [
+      {
+        "studentId": "STU003",
+        "name": "Liam Neeson",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-11a-1",
+    "date": "2026-05-24",
+    "classId": "SS3",
+    "records": [
+      {
+        "studentId": "STU004",
+        "name": "Sophia Loren",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-10b-2",
+    "date": "2026-05-23",
+    "classId": "Primary 4",
+    "records": [
+      {
+        "studentId": "STU001",
+        "name": "Alex Mercer",
+        "status": "Present"
+      },
+      {
+        "studentId": "STU002",
+        "name": "Emma Watson",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-9a-2",
+    "date": "2026-05-23",
+    "classId": "Jss2",
+    "records": [
+      {
+        "studentId": "STU003",
+        "name": "Liam Neeson",
+        "status": "Absent"
+      }
+    ]
+  },
+  {
+    "id": "att-11a-2",
+    "date": "2026-05-23",
+    "classId": "SS3",
+    "records": [
+      {
+        "studentId": "STU004",
+        "name": "Sophia Loren",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-10b-3",
+    "date": "2026-05-22",
+    "classId": "Primary 4",
+    "records": [
+      {
+        "studentId": "STU001",
+        "name": "Alex Mercer",
+        "status": "Absent"
+      },
+      {
+        "studentId": "STU002",
+        "name": "Emma Watson",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-9a-3",
+    "date": "2026-05-22",
+    "classId": "Jss2",
+    "records": [
+      {
+        "studentId": "STU003",
+        "name": "Liam Neeson",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-11a-3",
+    "date": "2026-05-22",
+    "classId": "SS3",
+    "records": [
+      {
+        "studentId": "STU004",
+        "name": "Sophia Loren",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-10b-4",
+    "date": "2026-05-21",
+    "classId": "Primary 4",
+    "records": [
+      {
+        "studentId": "STU001",
+        "name": "Alex Mercer",
+        "status": "Present"
+      },
+      {
+        "studentId": "STU002",
+        "name": "Emma Watson",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-9a-4",
+    "date": "2026-05-21",
+    "classId": "Jss2",
+    "records": [
+      {
+        "studentId": "STU003",
+        "name": "Liam Neeson",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-11a-4",
+    "date": "2026-05-21",
+    "classId": "SS3",
+    "records": [
+      {
+        "studentId": "STU004",
+        "name": "Sophia Loren",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-10b-5",
+    "date": "2026-05-20",
+    "classId": "Primary 4",
+    "records": [
+      {
+        "studentId": "STU001",
+        "name": "Alex Mercer",
+        "status": "Late"
+      },
+      {
+        "studentId": "STU002",
+        "name": "Emma Watson",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-9a-5",
+    "date": "2026-05-20",
+    "classId": "Jss2",
+    "records": [
+      {
+        "studentId": "STU003",
+        "name": "Liam Neeson",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-11a-5",
+    "date": "2026-05-20",
+    "classId": "SS3",
+    "records": [
+      {
+        "studentId": "STU004",
+        "name": "Sophia Loren",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-10b-6",
+    "date": "2026-05-19",
+    "classId": "Primary 4",
+    "records": [
+      {
+        "studentId": "STU001",
+        "name": "Alex Mercer",
+        "status": "Present"
+      },
+      {
+        "studentId": "STU002",
+        "name": "Emma Watson",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-9a-6",
+    "date": "2026-05-19",
+    "classId": "Jss2",
+    "records": [
+      {
+        "studentId": "STU003",
+        "name": "Liam Neeson",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-11a-6",
+    "date": "2026-05-19",
+    "classId": "SS3",
+    "records": [
+      {
+        "studentId": "STU004",
+        "name": "Sophia Loren",
+        "status": "Present"
+      }
+    ]
+  },
+  {
+    "id": "att-class-10b-1779796774011",
+    "date": "2026-05-26",
+    "classId": "Primary 4",
+    "records": [
+      {
+        "studentId": "STU001",
+        "name": "Alex Mercer",
+        "status": "Present"
+      },
+      {
+        "studentId": "STU002",
+        "name": "Emma Watson",
+        "status": "Late"
+      }
+    ]
+  },
+  {
+    "id": "att-class-10b-1780555335179",
+    "date": "2026-06-04",
+    "classId": "class-10b",
+    "records": []
+  }
+]

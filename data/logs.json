@@ -1,0 +1,170 @@
+[
+  {
+    "id": "log-1780555674395",
+    "timestamp": "2026-06-04T06:47:54.395Z",
+    "user": "parent",
+    "role": "parent",
+    "action": "User Login",
+    "details": "Logged into the system successfully as parent"
+  },
+  {
+    "id": "log-1780555535301",
+    "timestamp": "2026-06-04T06:45:35.301Z",
+    "user": "student",
+    "role": "student",
+    "action": "User Login",
+    "details": "Logged into the system successfully as student"
+  },
+  {
+    "id": "log-1780555335182",
+    "timestamp": "2026-06-04T06:42:15.182Z",
+    "user": "teacher",
+    "role": "teacher",
+    "action": "Attendance Marked",
+    "details": "Recorded classroom attendance for class-10b on 2026-06-04"
+  },
+  {
+    "id": "log-1780555193022",
+    "timestamp": "2026-06-04T06:39:53.022Z",
+    "user": "teacher",
+    "role": "teacher",
+    "action": "User Login",
+    "details": "Logged into the system successfully as teacher"
+  },
+  {
+    "id": "log-1780555093910",
+    "timestamp": "2026-06-04T06:38:13.910Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "Class Created",
+    "details": "Created classroom unit Primary 2 (class 2A)"
+  },
+  {
+    "id": "log-1780554861767",
+    "timestamp": "2026-06-04T06:34:21.767Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "Grading Executed",
+    "details": "Uploaded scores for Emma Watson in Mathematics (Algebra)"
+  },
+  {
+    "id": "log-1780554861723",
+    "timestamp": "2026-06-04T06:34:21.723Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "Grading Executed",
+    "details": "Uploaded scores for Alex Mercer in Mathematics (Algebra)"
+  },
+  {
+    "id": "log-1780554606471",
+    "timestamp": "2026-06-04T06:30:06.471Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "Exam Drafted",
+    "details": "Generated exam mathematics for class-10b"
+  },
+  {
+    "id": "log-1780529115653",
+    "timestamp": "2026-06-03T23:25:15.653Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "User Login",
+    "details": "Logged into the system successfully as admin"
+  },
+  {
+    "id": "log-1779797338173",
+    "timestamp": "2026-05-26T12:08:58.173Z",
+    "user": "parent",
+    "role": "parent",
+    "action": "User Login",
+    "details": "Logged into the system successfully as parent"
+  },
+  {
+    "id": "log-1779797017517",
+    "timestamp": "2026-05-26T12:03:37.517Z",
+    "user": "student",
+    "role": "student",
+    "action": "User Login",
+    "details": "Logged into the system successfully as student"
+  },
+  {
+    "id": "log-1779796926995",
+    "timestamp": "2026-05-26T12:02:06.995Z",
+    "user": "teacher",
+    "role": "teacher",
+    "action": "Attendance Marked",
+    "details": "Recorded classroom attendance for class-10b on 2026-05-26"
+  },
+  {
+    "id": "log-1779796863503",
+    "timestamp": "2026-05-26T12:01:03.503Z",
+    "user": "teacher",
+    "role": "teacher",
+    "action": "User Login",
+    "details": "Logged into the system successfully as teacher"
+  },
+  {
+    "id": "log-1779796774029",
+    "timestamp": "2026-05-26T11:59:34.029Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "Attendance Marked",
+    "details": "Recorded classroom attendance for class-10b on 2026-05-26"
+  },
+  {
+    "id": "log-1779796587768",
+    "timestamp": "2026-05-26T11:56:27.768Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "User Login",
+    "details": "Logged into the system successfully as admin"
+  },
+  {
+    "id": "log-1779796034693",
+    "timestamp": "2026-05-26T11:47:14.693Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "User Login",
+    "details": "Logged into the system successfully as admin"
+  },
+  {
+    "id": "log-1779792418769",
+    "timestamp": "2026-05-26T10:46:58.769Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "User Login",
+    "details": "Logged into the system successfully as admin"
+  },
+  {
+    "id": "log-1",
+    "timestamp": "2026-05-25T18:55:38.444Z",
+    "user": "admin",
+    "role": "Admin",
+    "action": "Staff Record Generated",
+    "details": "Added Robert Garcia (Teacher) to staff database"
+  },
+  {
+    "id": "log-2",
+    "timestamp": "2026-05-25T19:55:38.444Z",
+    "user": "teacher",
+    "role": "Teacher",
+    "action": "Attendance Recorded",
+    "details": "Marked today's attendance for Grade 10B"
+  },
+  {
+    "id": "log-3",
+    "timestamp": "2026-05-25T20:55:38.444Z",
+    "user": "admin",
+    "role": "Admin",
+    "action": "Result Processed",
+    "details": "Uploaded and graded scores for Exam ex-001 (Mathematics)"
+  },
+  {
+    "id": "log-4",
+    "timestamp": "2026-05-25T22:25:38.444Z",
+    "user": "teacher",
+    "role": "Teacher",
+    "action": "Exam Created",
+    "details": "Scheduled English (Literature) for 2026-06-10"
+  }
+]

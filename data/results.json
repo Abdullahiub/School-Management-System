@@ -1,0 +1,67 @@
+[
+  {
+    "id": "res-1",
+    "examId": "ex-001",
+    "studentId": "STU001",
+    "studentName": "Alex Mercer",
+    "classId": "Primary 4",
+    "subject": "Mathematics (Algebra)",
+    "score": 85,
+    "maxMarks": 100,
+    "average": 85,
+    "grade": "B",
+    "status": "Pass"
+  },
+  {
+    "id": "res-2",
+    "examId": "ex-001",
+    "studentId": "STU002",
+    "studentName": "Emma Watson",
+    "classId": "Primary 4",
+    "subject": "Mathematics (Algebra)",
+    "score": 92,
+    "maxMarks": 100,
+    "average": 92,
+    "grade": "A",
+    "status": "Pass"
+  },
+  {
+    "id": "res-3",
+    "examId": "ex-002",
+    "studentId": "STU001",
+    "studentName": "Alex Mercer",
+    "classId": "Primary 4",
+    "subject": "Science (Biology)",
+    "score": 78,
+    "maxMarks": 100,
+    "grade": "C",
+    "average": 78,
+    "status": "Pass"
+  },
+  {
+    "id": "res-4",
+    "examId": "ex-002",
+    "studentId": "STU002",
+    "studentName": "Emma Watson",
+    "classId": "Primary 4",
+    "subject": "Science (Biology)",
+    "score": 96,
+    "maxMarks": 100,
+    "grade": "A",
+    "average": 96,
+    "status": "Pass"
+  },
+  {
+    "id": "res-5",
+    "examId": "ex-003",
+    "studentId": "STU004",
+    "studentName": "Sophia Loren",
+    "classId": "SS3",
+    "subject": "Physics (Mechanics)",
+    "score": 88,
+    "maxMarks": 100,
+    "grade": "B",
+    "average": 88,
+    "status": "Pass"
+  }
+]

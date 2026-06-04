@@ -1,0 +1,42 @@
+[
+  {
+    "id": "TCH101",
+    "staffId": "TCH101",
+    "fullName": "David Miller",
+    "department": "Mathematics",
+    "role": "Teacher",
+    "phone": "+1 555-0101",
+    "email": "david.miller@school.edu",
+    "photoUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "TCH102",
+    "staffId": "TCH102",
+    "fullName": "Sarah Jenkins",
+    "department": "Science",
+    "role": "Teacher",
+    "phone": "+1 555-0102",
+    "email": "sarah.jenkins@school.edu",
+    "photoUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "TCH103",
+    "staffId": "TCH103",
+    "fullName": "Robert Garcia",
+    "department": "English",
+    "role": "Teacher",
+    "phone": "+1 555-0103",
+    "email": "robert.garcia@school.edu",
+    "photoUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "ADM101",
+    "staffId": "ADM101",
+    "fullName": "Jennifer Lopez",
+    "department": "Administration",
+    "role": "Admin",
+    "phone": "+1 555-0100",
+    "email": "jennifer.admin@school.edu",
+    "photoUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80"
+  }
+]
