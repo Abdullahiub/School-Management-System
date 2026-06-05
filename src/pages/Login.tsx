@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext.js';
-import { KeyRound, Lock, User, Users, GraduationCap, ArrowRight, Eye, EyeOff, CheckSquare, HelpCircle } from 'lucide-react';
+import { KeyRound, Lock, User, Users, GraduationCap, ArrowRight, Eye, EyeOff, CheckSquare, HelpCircle, UserPlus, AlertCircle } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function Login() {
-  const { login, isLoading } = useApp();
+  const { login, showToast, isLoading } = useApp();
+  
+  // Login mode state
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState<'admin' | 'teacher' | 'student' | 'parent'>('admin');
@@ -12,7 +14,17 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [isForgotOpen, setIsForgotOpen] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Signup mode state
+  const [isSignupMode, setIsSignupMode] = useState(false);
+  const [signupFullName, setSignupFullName] = useState('');
+  const [signupUsername, setSignupUsername] = useState('');
+  const [signupPassword, setSignupPassword] = useState('');
+  const [signupConfirmPassword, setSignupConfirmPassword] = useState('');
+  const [signupRole, setSignupRole] = useState<'teacher' | 'student' | 'parent'>('student');
+  const [showSignupPassword, setShowSignupPassword] = useState(false);
+  const [signupLoading, setSignupLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!username.trim() || !password.trim()) return;
 
@@ -22,6 +34,58 @@ export default function Login() {
       // Handled in Context
     }
   };
+
+  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    if (!signupFullName.trim() || !signupUsername.trim() || !signupPassword.trim()) {
+      showToast('All fields are required.', 'error');
+      return;
+    }
+
+    if (signupPassword !== signupConfirmPassword) {
+      showToast('Passwords do not match.', 'error');
+      return;
+    }
+
+    if (signupPassword.length < 6) {
+      showToast('Password must be at least 6 characters long.', 'error');
+      return;
+    }
+
+    setSignupLoading(true);
+    try {
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName: signupFullName.trim(),
+          username: signupUsername.trim(),
+          password: signupPassword,
+          role: signupRole
+        })
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        showToast(error.error || 'Signup failed.', 'error');
+        return;
+      }
+
+      showToast('Account created successfully! You can now login.', 'success');
+      setIsSignupMode(false);
+      setSignupFullName('');
+      setSignupUsername('');
+      setSignupPassword('');
+      setSignupConfirmPassword('');
+      setSignupRole('student');
+    } catch (err) {
+      showToast('Signup failed. Please try again.', 'error');
+    } finally {
+      setSignupLoading(false);
+    }
+  };
+
 
   return (
     <div id="login-root" className="min-h-screen relative bg-slate-50 dark:bg-slate-950 flex flex-col items-center justify-center p-4 transition-colors duration-200">
@@ -47,7 +111,35 @@ export default function Login() {
           </p>
         </div>
 
-        {/* Login Form */}
+        {/* Login and Signup toggle */}
+        <div className="flex gap-2 mb-8">
+          <button
+            type="button"
+            onClick={() => setIsSignupMode(false)}
+            className={`flex-1 py-2.5 rounded-xl font-medium text-sm transition-all ${
+              !isSignupMode
+                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20'
+                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-150'
+            }`}
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            onClick={() => setIsSignupMode(true)}
+            className={`flex-1 py-2.5 rounded-xl font-medium text-sm transition-all flex items-center justify-center gap-1.5 ${
+              isSignupMode
+                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20'
+                : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-150'
+            }`}
+          >
+            <UserPlus className="h-4 w-4" />
+            Sign Up
+          </button>
+        </div>
+
+        {/* LOGIN FORM */}
+        {!isSignupMode && (
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Role selector dropdown with stylized layout */}
           <div className="space-y-1.5">
@@ -58,7 +150,7 @@ export default function Login() {
             <div className="relative">
               <select
                 value={role}
-                onChange={e => setRole(e.target.value as any)}
+                onChange={e => setRole(e.target.value as 'admin' | 'teacher' | 'student' | 'parent')}
                 className="w-full px-4 py-3 text-slate-800 dark:text-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 dark:focus:border-indigo-500 outline-none transition-all cursor-pointer appearance-none glass-input"
               >
                 <option value="admin">Administrator / Principal</option>
@@ -153,6 +245,135 @@ export default function Login() {
             {!isLoading && <ArrowRight className="h-4 w-4" />}
           </button>
         </form>
+        )}
+
+        {/* SIGNUP FORM */}
+        {isSignupMode && (
+        <form onSubmit={handleSignup} className="space-y-5">
+          {/* Full Name */}
+          <div className="space-y-1.5">
+            <label className="text-xs font-semibold text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
+              <User className="h-3.5 w-3.5 text-indigo-500" />
+              Full Name
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                value={signupFullName}
+                onChange={e => setSignupFullName(e.target.value)}
+                placeholder="e.g. John Doe"
+                required
+                className="w-full pl-11 pr-4 py-3 text-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 dark:focus:border-indigo-500 outline-none transition-all glass-input"
+              />
+              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
+                <User className="h-4.5 w-4.5" />
+              </div>
+            </div>
+          </div>
+
+          {/* Role selector (no admin) */}
+          <div className="space-y-1.5">
+            <label className="text-xs font-semibold text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
+              <Users className="h-3.5 w-3.5 text-indigo-500" />
+              Select Your Role
+            </label>
+            <div className="relative">
+              <select
+                value={signupRole}
+                onChange={e => setSignupRole(e.target.value as 'teacher' | 'student' | 'parent')}
+                className="w-full px-4 py-3 text-slate-800 dark:text-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 dark:focus:border-indigo-500 outline-none transition-all cursor-pointer appearance-none glass-input"
+              >
+                <option value="teacher">Classroom Instructor / Teacher</option>
+                <option value="student">Student Portal</option>
+                <option value="parent">Parent Portal</option>
+              </select>
+              <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                <Users className="h-4 w-4" />
+              </div>
+            </div>
+          </div>
+
+          {/* Username */}
+          <div className="space-y-1.5">
+            <label className="text-xs font-semibold text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
+              <User className="h-3.5 w-3.5 text-indigo-500" />
+              Create Username
+            </label>
+            <div className="relative">
+              <input
+                type="text"
+                value={signupUsername}
+                onChange={e => setSignupUsername(e.target.value)}
+                placeholder="e.g. johndoe123"
+                required
+                className="w-full pl-11 pr-4 py-3 text-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 dark:focus:border-indigo-500 outline-none transition-all glass-input"
+              />
+              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
+                <User className="h-4.5 w-4.5" />
+              </div>
+            </div>
+          </div>
+
+          {/* Password */}
+          <div className="space-y-1.5">
+            <label className="text-xs font-semibold text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
+              <Lock className="h-3.5 w-3.5 text-indigo-500" />
+              Create Password
+            </label>
+            <div className="relative">
+              <input
+                type={showSignupPassword ? 'text' : 'password'}
+                value={signupPassword}
+                onChange={e => setSignupPassword(e.target.value)}
+                placeholder="••••••••"
+                required
+                className="w-full pl-11 pr-11 py-3 text-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 dark:focus:border-indigo-500 outline-none transition-all glass-input"
+              />
+              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
+                <Lock className="h-4.5 w-4.5" />
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowSignupPassword(!showSignupPassword)}
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 cursor-pointer"
+              >
+                {showSignupPassword ? <EyeOff className="h-4.5 w-4.5" /> : <Eye className="h-4.5 w-4.5" />}
+              </button>
+            </div>
+          </div>
+
+          {/* Confirm Password */}
+          <div className="space-y-1.5">
+            <label className="text-xs font-semibold text-slate-600 dark:text-slate-300 flex items-center gap-1.5">
+              <Lock className="h-3.5 w-3.5 text-indigo-500" />
+              Confirm Password
+            </label>
+            <div className="relative">
+              <input
+                type={showSignupPassword ? 'text' : 'password'}
+                value={signupConfirmPassword}
+                onChange={e => setSignupConfirmPassword(e.target.value)}
+                placeholder="••••••••"
+                required
+                className="w-full pl-11 pr-4 py-3 text-slate-800 dark:text-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 dark:focus:border-indigo-500 outline-none transition-all glass-input"
+              />
+              <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
+                <Lock className="h-4.5 w-4.5" />
+              </div>
+            </div>
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={signupLoading}
+            className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-medium text-sm flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-indigo-600/15 disabled:bg-indigo-400 disabled:shadow-none cursor-pointer transition-all mt-6"
+          >
+            {signupLoading ? 'Creating Account...' : 'Create Account'}
+            {!signupLoading && <UserPlus className="h-4 w-4" />}
+          </button>
+        </form>
+        )}
 
         {/* Quick Demo Credentials Panel */}
        {/* <div className="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">

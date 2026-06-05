@@ -56,11 +56,11 @@ function DashboardRouter() {
           )}
 
           {user?.role === 'teacher' && (
-            <TeacherDashboard />
+            <TeacherDashboard activeTab={activeTab} />
           )}
 
           {user?.role === 'student' && (
-            <StudentDashboard />
+            <StudentDashboard activeTab={activeTab} />
           )}
 
           {user?.role === 'parent' && (

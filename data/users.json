@@ -16,19 +16,35 @@
     "linkedId": "TCH101"
   },
   {
-    "id": "usr-3",
-    "username": "student",
-    "passwordHash": "student123",
+    "id": "usr-t-1780581658264",
+    "username": "tch553",
+    "fullName": "musa isa",
+    "passwordHash": "teacher123",
+    "role": "teacher",
+    "linkedId": "TCH553"
+  },
+  {
+    "id": "usr-stu001",
+    "username": "student001",
+    "passwordHash": "student001",
     "role": "student",
-    "fullName": "Alex Mercer",
+    "fullName": "Student 001",
     "linkedId": "STU001"
   },
   {
-    "id": "usr-4",
-    "username": "parent",
-    "passwordHash": "parent123",
+    "id": "usr-parent001",
+    "username": "parent001",
+    "passwordHash": "parent001",
     "role": "parent",
-    "fullName": "John Mercer",
+    "fullName": "Parent 001",
     "linkedId": "STU001"
+  },
+  {
+    "id": "user-1780647948890",
+    "username": "ahmad",
+    "passwordHash": "ahmadyu",
+    "role": "student",
+    "fullName": "Ahmad Yahaya",
+    "linkedId": "STU002"
   }
 ]

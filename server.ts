@@ -83,6 +83,69 @@ async function startServer() {
     });
   });
 
+  // Signup
+  app.post('/api/auth/signup', (req: Request, res: Response) => {
+    const { fullName, username, password, role } = req.body;
+
+    if (!fullName || !username || !password || !role) {
+      return res.status(400).json({ error: 'Please provide fullName, username, password and role.' });
+    }
+
+    if (role === 'admin') {
+      return res.status(400).json({ error: 'Admin role cannot be created through signup.' });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({ error: 'Password must be at least 6 characters long.' });
+    }
+
+    const users = readCollection<User>('users');
+    
+    // Check if username already exists
+    const existingUser = users.find(u => u.username.toLowerCase() === username.toLowerCase());
+    if (existingUser) {
+      return res.status(400).json({ error: 'Username already exists.' });
+    }
+
+    // Generate unique user ID based on role
+    const rolePrefix = role === 'teacher' ? 'TCH' : role === 'student' ? 'STU' : 'PAR';
+    const count = users.filter(u => u.role === role).length + 1;
+    const linkedId = `${rolePrefix}${String(count).padStart(3, '0')}`;
+
+    // Create new user
+    const newUser: User = {
+      id: `user-${Date.now()}`,
+      username: username.trim(),
+      passwordHash: password,
+      role: role as 'teacher' | 'student' | 'parent',
+      fullName: fullName.trim(),
+      linkedId
+    };
+
+    // Add user to collection
+    users.push(newUser);
+    writeCollection('users', users);
+
+    // Generate JWT
+    const token = jwt.sign(
+      { id: newUser.id, username: newUser.username, role: newUser.role, linkedId: newUser.linkedId, fullName: newUser.fullName },
+      JWT_SECRET,
+      { expiresIn: '24h' }
+    );
+
+    logActivity(newUser.username, newUser.role, 'User Signup', `New account created as ${newUser.role}`);
+
+    return res.status(201).json({
+      token,
+      user: {
+        username: newUser.username,
+        role: newUser.role,
+        fullName: newUser.fullName,
+        linkedId: newUser.linkedId
+      }
+    });
+  });
+
   // JWT Verification Middleware
   const authenticateToken = (req: any, res: Response, next: NextFunction) => {
     const authHeader = req.headers['authorization'];

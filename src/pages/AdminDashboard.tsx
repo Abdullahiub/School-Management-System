@@ -9,7 +9,8 @@ import {
   StudentResult,
   SchoolClass,
   ActivityLog,
-  DashboardStats
+  DashboardStats,
+  AttendanceRecord
 } from '../types.js';
 import {
   Users,
@@ -108,7 +109,7 @@ export default function AdminDashboard({ activeTab, setActiveTab }: AdminDashboa
   // --- Attendance Marker Panel States ---
   const [attendanceClass, setAttendanceClass] = useState('');
   const [attendanceDate, setAttendanceDate] = useState(new Date().toISOString().split('T')[0]);
-  const [attendanceStudents, setAttendanceStudents] = useState<{ id: string; name: string; status: 'Present' | 'Absent' | 'Late' }[]>([]);
+  const [attendanceStudents, setAttendanceStudents] = useState<AttendanceRecord[]>([]);
 
   // --- Result/Grading Input Panel States ---
   const [gradingExam, setGradingExam] = useState('');
@@ -170,7 +171,7 @@ export default function AdminDashboard({ activeTab, setActiveTab }: AdminDashboa
         if (attList.length > 0 && attList[0].records) {
           setAttendanceStudents(
             attList[0].records.map((r: any) => ({
-              id: r.studentId,
+              studentId: r.studentId,
               name: r.name,
               status: r.status
             }))
@@ -179,7 +180,7 @@ export default function AdminDashboard({ activeTab, setActiveTab }: AdminDashboa
           // Fill Default
           setAttendanceStudents(
             classRoster.map(s => ({
-              id: s.regNo,
+              studentId: s.regNo,
               name: s.fullName,
               status: 'Present'
             }))
@@ -189,7 +190,7 @@ export default function AdminDashboard({ activeTab, setActiveTab }: AdminDashboa
         // Fallback
         setAttendanceStudents(
           classRoster.map(s => ({
-            id: s.regNo,
+            studentId: s.regNo,
             name: s.fullName,
             status: 'Present'
           }))
@@ -406,7 +407,7 @@ export default function AdminDashboard({ activeTab, setActiveTab }: AdminDashboa
         date: attendanceDate,
         classId: attendanceClass,
         records: attendanceStudents.map(as => ({
-          studentId: as.id,
+          studentId: as.studentId,
           name: as.name,
           status: as.status
         }))
@@ -992,20 +993,20 @@ export default function AdminDashboard({ activeTab, setActiveTab }: AdminDashboa
                 </thead>
                 <tbody className="divide-y divide-gray-100 dark:divide-slate-800 text-xs text-slate-700 dark:text-slate-300">
                   {attendanceStudents.map((as, idx) => (
-                    <tr key={as.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-850/40">
+                    <tr key={as.studentId} className="hover:bg-slate-50/50 dark:hover:bg-slate-850/40">
                       <td className="py-4 px-6 text-slate-400 font-mono">{idx + 1}</td>
-                      <td className="py-4 px-6 font-mono font-medium text-indigo-500">{as.id}</td>
+                      <td className="py-4 px-6 font-mono font-medium text-indigo-500">{as.studentId}</td>
                       <td className="py-4 px-6 font-semibold">{as.name}</td>
                       <td className="py-4 px-6">
                         <div className="flex justify-center gap-4">
                           <label className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-transparent hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer select-none">
                             <input
                               type="radio"
-                              name={`att-${as.id}`}
+                              name={`att-${as.studentId}`}
                               checked={as.status === 'Present'}
                               onChange={() => {
                                 setAttendanceStudents(prev =>
-                                  prev.map(p => (p.id === as.id ? { ...p, status: 'Present' } : p))
+                                  prev.map(p => (p.studentId === as.studentId ? { ...p, status: 'Present' } : p))
                                 );
                               }}
                               className="accent-emerald-600"
@@ -1016,11 +1017,11 @@ export default function AdminDashboard({ activeTab, setActiveTab }: AdminDashboa
                           <label className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-transparent hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer select-none">
                             <input
                               type="radio"
-                              name={`att-${as.id}`}
+                              name={`att-${as.studentId}`}
                               checked={as.status === 'Absent'}
                               onChange={() => {
                                 setAttendanceStudents(prev =>
-                                  prev.map(p => (p.id === as.id ? { ...p, status: 'Absent' } : p))
+                                  prev.map(p => (p.studentId === as.studentId ? { ...p, status: 'Absent' } : p))
                                 );
                               }}
                               className="accent-rose-600"
@@ -1031,11 +1032,11 @@ export default function AdminDashboard({ activeTab, setActiveTab }: AdminDashboa
                           <label className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-transparent hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer select-none">
                             <input
                               type="radio"
-                              name={`att-${as.id}`}
+                              name={`att-${as.studentId}`}
                               checked={as.status === 'Late'}
                               onChange={() => {
                                 setAttendanceStudents(prev =>
-                                  prev.map(p => (p.id === as.id ? { ...p, status: 'Late' } : p))
+                                  prev.map(p => (p.studentId === as.studentId ? { ...p, status: 'Late' } : p))
                                 );
                               }}
                               className="accent-amber-500"

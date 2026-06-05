@@ -16,7 +16,11 @@ import {
   AlertCircle
 } from 'lucide-react';
 
-export default function StudentDashboard() {
+interface StudentDashboardProps {
+  activeTab: string;
+}
+
+export default function StudentDashboard({ activeTab }: StudentDashboardProps) {
   const { user, showToast } = useApp();
   const [queryRegNo, setQueryRegNo] = useState(user?.linkedId || '');
   const [student, setStudent] = useState<Student | null>(null);
@@ -24,6 +28,16 @@ export default function StudentDashboard() {
   const [results, setResults] = useState<StudentResult[]>([]);
   const [exams, setExams] = useState<Exam[]>([]);
   const [loading, setLoading] = useState(false);
+
+  const isAttendanceTab = activeTab === 'attendance';
+  const isExamTab = activeTab === 'exams';
+
+  const studentAttendanceHistory = attendance
+    .map(att => {
+      const record = att.records.find(rec => rec.studentId.toLowerCase() === student?.regNo.toLowerCase());
+      return record ? { ...att, record } : null;
+    })
+    .filter((item): item is Attendance & { record: Attendance['records'][number] } => item !== null);
 
   const fetchStudentData = async (regNoToFetch: string) => {
     if (!regNoToFetch.trim()) return;
@@ -181,84 +195,186 @@ export default function StudentDashboard() {
 
           {/* 2. Middle Attendance Check Summary & Roster Results Column */}
           <div className="lg:col-span-8 space-y-6">
-
-            {/* Attendance indicator summary */}
-            <div className="p-5 bg-white dark:bg-slate-900 border border-gray-150 dark:border-slate-800 rounded-3xl shadow-sm grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="p-4 bg-slate-50 dark:bg-slate-850 rounded-2xl flex items-center gap-3">
-                <CalendarCheck className="h-5 w-5 text-indigo-500" />
+            <div className="p-5 bg-white dark:bg-slate-900 border border-gray-150 dark:border-slate-800 rounded-3xl shadow-sm">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                 <div>
-                  <span className="text-[10px] text-slate-400 font-bold block uppercase">Roster Attendance</span>
-                  <span className="text-lg font-bold text-slate-850 dark:text-slate-200">{attendanceRate.toFixed(0)}% Rate</span>
+                  <h4 className="font-bold text-sm text-slate-900 dark:text-slate-200">{isAttendanceTab ? 'My Attendance' : isExamTab ? 'My Exam Results' : 'Dashboard Overview'}</h4>
+                  <p className="text-[10px] text-slate-400 mt-0.5">
+                    {isAttendanceTab
+                      ? 'Your attendance history and presence rate for the selected registration number.'
+                      : isExamTab
+                      ? 'Review exam scores and export your report card.'
+                      : 'Track your profile, attendance summary, and academic result details.'}
+                  </p>
                 </div>
-              </div>
-
-              <div className="p-4 bg-slate-50 dark:bg-slate-850 rounded-2xl flex items-center gap-3">
-                <CheckCircle className="h-5 w-5 text-emerald-500" />
-                <div>
-                  <span className="text-[10px] text-slate-400 font-bold block uppercase">Present Days</span>
-                  <span className="text-lg font-bold text-emerald-600">{presentDays} recorded</span>
-                </div>
-              </div>
-
-              <div className="p-4 bg-slate-50 dark:bg-slate-850 rounded-2xl flex items-center gap-3">
-                <XCircle className="h-5 w-5 text-rose-500" />
-                <div>
-                  <span className="text-[10px] text-slate-400 font-bold block uppercase">Absent Days</span>
-                  <span className="text-lg font-bold text-rose-600">{attendance.length - presentDays - lateDays} missed</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Detailed Examination Card scores */}
-            <div className="p-5 bg-white dark:bg-slate-900 border border-gray-150 dark:border-slate-800 rounded-3xl shadow-sm space-y-4">
-              <div className="flex items-center justify-between border-b pb-3 border-gray-150">
-                <div>
-                  <h4 className="font-bold text-sm text-slate-900 dark:text-slate-200">Academic Score Grades Chart</h4>
-                  <p className="text-[10px] text-slate-400 mt-0.5">Subject course evaluations and automatic grade calculation metrics.</p>
-                </div>
-                <button
-                  onClick={downloadPDFReport}
-                  className="px-3.5 py-2 border rounded-xl hover:bg-slate-50 dark:hover:bg-slate-850 font-bold text-indigo-600 flex items-center gap-1.5 cursor-pointer"
-                >
-                  <Download className="h-3.5 w-3.5" /> PDF Report Card
-                </button>
-              </div>
-
-              <div className="divide-y divide-slate-100 dark:divide-slate-850">
-                {results.map(res => (
-                  <div key={res.id} className="py-3 flex items-center justify-between">
-                    <div>
-                      <h5 className="font-bold text-slate-800 dark:text-slate-200">{res.subject}</h5>
-                      <span className="text-[9px] text-slate-400">Class unit criteria evaluation</span>
-                    </div>
-
-                    <div className="flex items-center gap-6">
-                      <div className="text-right">
-                        <span className="text-xs font-bold text-slate-900 dark:text-slate-200">{res.score} / {res.maxMarks}</span>
-                        <div className="text-[9px] text-slate-400">Passing threshold {50}</div>
-                      </div>
-
-                      <span className={`px-2.5 py-1 rounded-md text-[10px] font-bold ${
-                        res.grade === 'A' ? 'bg-emerald-50 text-emerald-700' :
-                        res.grade === 'F' ? 'bg-rose-50 text-rose-700' :
-                        'bg-slate-50 text-slate-700 dark:bg-slate-800'
-                      }`}>
-                        Grade {res.grade}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-
-                {results.length === 0 && (
-                  <div className="text-center py-10 text-slate-400">
-                    No results have been processed yet for this session exam term.
-                  </div>
+                {isExamTab && (
+                  <button
+                    onClick={downloadPDFReport}
+                    className="px-3.5 py-2 border rounded-xl hover:bg-slate-50 dark:hover:bg-slate-850 font-bold text-indigo-600 flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <Download className="h-3.5 w-3.5" /> PDF Report Card
+                  </button>
                 )}
               </div>
             </div>
 
-          </div>
+            {isAttendanceTab && (
+              <>
+                <div className="p-5 bg-white dark:bg-slate-900 border border-gray-150 dark:border-slate-800 rounded-3xl shadow-sm grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="p-4 bg-slate-50 dark:bg-slate-850 rounded-2xl flex items-center gap-3">
+                    <CalendarCheck className="h-5 w-5 text-indigo-500" />
+                    <div>
+                      <span className="text-[10px] text-slate-400 font-bold block uppercase">Attendance Rate</span>
+                      <span className="text-lg font-bold text-slate-850 dark:text-slate-200">{attendanceRate.toFixed(0)}%</span>
+                    </div>
+                  </div>
 
+                  <div className="p-4 bg-slate-50 dark:bg-slate-850 rounded-2xl flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-emerald-500" />
+                    <div>
+                      <span className="text-[10px] text-slate-400 font-bold block uppercase">Present</span>
+                      <span className="text-lg font-bold text-emerald-600">{presentDays}</span>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-slate-50 dark:bg-slate-850 rounded-2xl flex items-center gap-3">
+                    <XCircle className="h-5 w-5 text-rose-500" />
+                    <div>
+                      <span className="text-[10px] text-slate-400 font-bold block uppercase">Absent</span>
+                      <span className="text-lg font-bold text-rose-600">{attendance.length - presentDays - lateDays}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-5 bg-white dark:bg-slate-900 border border-gray-150 dark:border-slate-800 rounded-3xl shadow-sm overflow-x-auto">
+                  <table className="min-w-full text-left text-xs text-slate-600 dark:text-slate-300">
+                    <thead>
+                      <tr className="border-b border-slate-100 dark:border-slate-800">
+                        <th className="py-3 px-3 uppercase tracking-wide">Date</th>
+                        <th className="py-3 px-3 uppercase tracking-wide">Class</th>
+                        <th className="py-3 px-3 uppercase tracking-wide">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {studentAttendanceHistory.map(record => (
+                        <tr key={record.id} className="border-b border-slate-100 dark:border-slate-800">
+                          <td className="py-3 px-3">{record.date}</td>
+                          <td className="py-3 px-3">{record.classId}</td>
+                          <td className={`py-3 px-3 font-semibold ${record.record.status === 'Present' ? 'text-emerald-600' : record.record.status === 'Late' ? 'text-amber-600' : 'text-rose-600'}`}>
+                            {record.record.status}
+                          </td>
+                        </tr>
+                      ))}
+                      {studentAttendanceHistory.length === 0 && (
+                        <tr>
+                          <td colSpan={3} className="py-6 px-3 text-center text-slate-400">No attendance records found for this student.</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            )}
+
+            {isExamTab && (
+              <div className="space-y-6">
+                <div className="p-5 bg-white dark:bg-slate-900 border border-gray-150 dark:border-slate-800 rounded-3xl shadow-sm divide-y divide-slate-100 dark:divide-slate-850">
+                  {results.map(res => (
+                    <div key={res.id} className="py-3 flex items-center justify-between">
+                      <div>
+                        <h5 className="font-bold text-slate-800 dark:text-slate-200">{res.subject}</h5>
+                        <span className="text-[9px] text-slate-400">{res.classId} • {res.status}</span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-xs font-bold text-slate-900 dark:text-slate-200">{res.score} / {res.maxMarks}</span>
+                        <div className="text-[9px] text-slate-400">Grade {res.grade}</div>
+                      </div>
+                    </div>
+                  ))}
+                  {results.length === 0 && (
+                    <div className="py-10 text-center text-slate-400">No exam results are available yet.</div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {!isAttendanceTab && !isExamTab && (
+              <>
+                <div className="p-5 bg-white dark:bg-slate-900 border border-gray-150 dark:border-slate-800 rounded-3xl shadow-sm grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div className="p-4 bg-slate-50 dark:bg-slate-850 rounded-2xl flex items-center gap-3">
+                    <CalendarCheck className="h-5 w-5 text-indigo-500" />
+                    <div>
+                      <span className="text-[10px] text-slate-400 font-bold block uppercase">Roster Attendance</span>
+                      <span className="text-lg font-bold text-slate-850 dark:text-slate-200">{attendanceRate.toFixed(0)}% Rate</span>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-slate-50 dark:bg-slate-850 rounded-2xl flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-emerald-500" />
+                    <div>
+                      <span className="text-[10px] text-slate-400 font-bold block uppercase">Present Days</span>
+                      <span className="text-lg font-bold text-emerald-600">{presentDays} recorded</span>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-slate-50 dark:bg-slate-850 rounded-2xl flex items-center gap-3">
+                    <XCircle className="h-5 w-5 text-rose-500" />
+                    <div>
+                      <span className="text-[10px] text-slate-400 font-bold block uppercase">Absent Days</span>
+                      <span className="text-lg font-bold text-rose-600">{attendance.length - presentDays - lateDays} missed</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-5 bg-white dark:bg-slate-900 border border-gray-150 dark:border-slate-800 rounded-3xl shadow-sm space-y-4">
+                  <div className="flex items-center justify-between border-b pb-3 border-gray-150">
+                    <div>
+                      <h4 className="font-bold text-sm text-slate-900 dark:text-slate-200">Academic Score Grades Chart</h4>
+                      <p className="text-[10px] text-slate-400 mt-0.5">Subject course evaluations and automatic grade calculation metrics.</p>
+                    </div>
+                    <button
+                      onClick={downloadPDFReport}
+                      className="px-3.5 py-2 border rounded-xl hover:bg-slate-50 dark:hover:bg-slate-850 font-bold text-indigo-600 flex items-center gap-1.5 cursor-pointer"
+                    >
+                      <Download className="h-3.5 w-3.5" /> PDF Report Card
+                    </button>
+                  </div>
+
+                  <div className="divide-y divide-slate-100 dark:divide-slate-850">
+                    {results.map(res => (
+                      <div key={res.id} className="py-3 flex items-center justify-between">
+                        <div>
+                          <h5 className="font-bold text-slate-800 dark:text-slate-200">{res.subject}</h5>
+                          <span className="text-[9px] text-slate-400">Class unit criteria evaluation</span>
+                        </div>
+
+                        <div className="flex items-center gap-6">
+                          <div className="text-right">
+                            <span className="text-xs font-bold text-slate-900 dark:text-slate-200">{res.score} / {res.maxMarks}</span>
+                            <div className="text-[9px] text-slate-400">Passing threshold {50}</div>
+                          </div>
+
+                          <span className={`px-2.5 py-1 rounded-md text-[10px] font-bold ${
+                            res.grade === 'A' ? 'bg-emerald-50 text-emerald-700' :
+                            res.grade === 'F' ? 'bg-rose-50 text-rose-700' :
+                            'bg-slate-50 text-slate-700 dark:bg-slate-800'
+                          }`}>
+                            Grade {res.grade}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+
+                    {results.length === 0 && (
+                      <div className="text-center py-10 text-slate-400">
+                        No results have been processed yet for this session exam term.
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
         </div>
       )}
 

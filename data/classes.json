@@ -26,5 +26,12 @@
     "teacherId": "TCH102",
     "teacherName": "Sarah Jenkins",
     "room": "Room 304"
+  },
+  {
+    "id": "primary 1A",
+    "name": "primary 1A",
+    "teacherId": "TCH101",
+    "teacherName": "David Miller",
+    "room": "Room 4"
   }
 ]

@@ -2,14 +2,14 @@
   {
     "id": "STU001",
     "regNo": "STU001",
-    "fullName": "Alex Mercer",
-    "gender": "Male",
-    "dob": "2011-04-12",
-    "classId": "Primary 4",
-    "parentName": "John Mercer",
-    "parentPhone": "+1 555-0111",
-    "address": "123 Maple Street, Sector-4",
-    "photoUrl": "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=150&auto=format&fit=crop&q=80"
+    "fullName": "Student 001",
+    "gender": "Other",
+    "dob": "2012-01-01",
+    "classId": "class-10b",
+    "parentName": "Parent 001",
+    "parentPhone": "+1 555-0100",
+    "address": "100 Student Lane",
+    "photoUrl": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80"
   },
   {
     "id": "STU002",
@@ -20,7 +20,7 @@
     "classId": "Primary 4",
     "parentName": "Richard Watson",
     "parentPhone": "+1 555-0112",
-    "address": "456 Oak Avenue, Sector-2",
+    "address": "kawo kaduna",
     "photoUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150&auto=format&fit=crop&q=80"
   },
   {

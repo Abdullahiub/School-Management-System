@@ -1,5 +1,173 @@
 [
   {
+    "id": "log-1780648035533",
+    "timestamp": "2026-06-05T08:27:15.533Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "User Login",
+    "details": "Logged into the system successfully as admin"
+  },
+  {
+    "id": "log-1780647990935",
+    "timestamp": "2026-06-05T08:26:30.935Z",
+    "user": "ahmad",
+    "role": "student",
+    "action": "User Login",
+    "details": "Logged into the system successfully as student"
+  },
+  {
+    "id": "log-1780647949008",
+    "timestamp": "2026-06-05T08:25:49.008Z",
+    "user": "ahmad",
+    "role": "student",
+    "action": "User Signup",
+    "details": "New account created as student"
+  },
+  {
+    "id": "log-1780645129683",
+    "timestamp": "2026-06-05T07:38:49.683Z",
+    "user": "parent001",
+    "role": "parent",
+    "action": "User Login",
+    "details": "Logged into the system successfully as parent"
+  },
+  {
+    "id": "log-1780644952091",
+    "timestamp": "2026-06-05T07:35:52.091Z",
+    "user": "teacher",
+    "role": "teacher",
+    "action": "Grading Executed",
+    "details": "Uploaded scores for Student 001 in mathematics"
+  },
+  {
+    "id": "log-1780587715620",
+    "timestamp": "2026-06-04T15:41:55.620Z",
+    "user": "teacher",
+    "role": "teacher",
+    "action": "User Login",
+    "details": "Logged into the system successfully as teacher"
+  },
+  {
+    "id": "log-1780586824590",
+    "timestamp": "2026-06-04T15:27:04.590Z",
+    "user": "student001",
+    "role": "student",
+    "action": "User Login",
+    "details": "Logged into the system successfully as student"
+  },
+  {
+    "id": "log-1780586744278",
+    "timestamp": "2026-06-04T15:25:44.278Z",
+    "user": "parent001",
+    "role": "parent",
+    "action": "User Login",
+    "details": "Logged into the system successfully as parent"
+  },
+  {
+    "id": "log-1780586099874",
+    "timestamp": "2026-06-04T15:14:59.874Z",
+    "user": "student001",
+    "role": "student",
+    "action": "User Login",
+    "details": "Logged into the system successfully as student"
+  },
+  {
+    "id": "log-1780585236665",
+    "timestamp": "2026-06-04T15:00:36.665Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "User Login",
+    "details": "Logged into the system successfully as admin"
+  },
+  {
+    "id": "log-1780584856201",
+    "timestamp": "2026-06-04T14:54:16.201Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "User Login",
+    "details": "Logged into the system successfully as admin"
+  },
+  {
+    "id": "log-1780584824012",
+    "timestamp": "2026-06-04T14:53:44.012Z",
+    "user": "teacher",
+    "role": "teacher",
+    "action": "User Login",
+    "details": "Logged into the system successfully as teacher"
+  },
+  {
+    "id": "log-1780581892302",
+    "timestamp": "2026-06-04T14:04:52.302Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "User Login",
+    "details": "Logged into the system successfully as admin"
+  },
+  {
+    "id": "log-1780581713941",
+    "timestamp": "2026-06-04T14:01:53.941Z",
+    "user": "teacher",
+    "role": "teacher",
+    "action": "User Login",
+    "details": "Logged into the system successfully as teacher"
+  },
+  {
+    "id": "log-1780581658268",
+    "timestamp": "2026-06-04T14:00:58.268Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "Staff Added",
+    "details": "Recruited new staff member musa isa (TCH553)"
+  },
+  {
+    "id": "log-1780581610930",
+    "timestamp": "2026-06-04T14:00:10.930Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "Class Created",
+    "details": "Created classroom unit primary 1A (primary 1A)"
+  },
+  {
+    "id": "log-1780581475478",
+    "timestamp": "2026-06-04T13:57:55.479Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "Student Updated",
+    "details": "Updated core details for Emma Watson"
+  },
+  {
+    "id": "log-1780581442268",
+    "timestamp": "2026-06-04T13:57:22.272Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "Student Removed",
+    "details": "Removed student record for usaman ykubu"
+  },
+  {
+    "id": "log-1780581421739",
+    "timestamp": "2026-06-04T13:57:01.739Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "Student Removed",
+    "details": "Removed student record for Alex Mercer"
+  },
+  {
+    "id": "log-1780581373574",
+    "timestamp": "2026-06-04T13:56:13.574Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "Student Admitted",
+    "details": "Admitted new student usaman ykubu (STU177)"
+  },
+  {
+    "id": "log-1780581165460",
+    "timestamp": "2026-06-04T13:52:45.460Z",
+    "user": "admin",
+    "role": "admin",
+    "action": "User Login",
+    "details": "Logged into the system successfully as admin"
+  },
+  {
     "id": "log-1780555674395",
     "timestamp": "2026-06-04T06:47:54.395Z",
     "user": "parent",

@@ -38,5 +38,15 @@
     "phone": "+1 555-0100",
     "email": "jennifer.admin@school.edu",
     "photoUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80"
+  },
+  {
+    "id": "TCH553",
+    "staffId": "TCH553",
+    "fullName": "musa isa",
+    "department": "English",
+    "role": "Teacher",
+    "phone": "08107695882",
+    "email": "abdullahiub@gmail.com",
+    "photoUrl": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80"
   }
 ]

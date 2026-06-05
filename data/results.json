@@ -63,5 +63,18 @@
     "grade": "B",
     "average": 88,
     "status": "Pass"
+  },
+  {
+    "id": "res-1780644951928",
+    "examId": "ex-1780554606207",
+    "studentId": "STU001",
+    "studentName": "Student 001",
+    "classId": "class-10b",
+    "subject": "mathematics",
+    "score": 27,
+    "maxMarks": 100,
+    "average": 27,
+    "grade": "F",
+    "status": "Fail"
   }
 ]
